@@ -48,10 +48,10 @@ This dashboard was developed as part of the 'Elucidating Diversity Dynamics in M
 
 ```{R}
 #| content: valuebox
-#| title: "Status: Caribbean data compilation"
+#| title: "Status"
 #| icon: calendar-range
 #| color: warning
-"Live"
+"Development"
 ```
 
 ```{R}
