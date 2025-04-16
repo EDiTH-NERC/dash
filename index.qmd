@@ -1,0 +1,271 @@
+--- 
+title: "ARCDB"
+format: 
+  dashboard:
+    orientation: columns
+    expandable: false
+    theme: 
+      - cosmo
+    css: custom.css
+    nav-buttons:
+     - icon: github
+       href: https://github.com/EDiTH-NERC/dash
+logo: images/coral.png
+---
+
+```{R}
+source("R/setup.R")
+
+```
+
+# About
+
+## Column {width=75%}
+
+::: {.card title="About"}
+
+# Motivation 
+
+# Status
+
+# Funding
+
+# How to use this dashboard
+
+# Creator
+
+# License
+
+# Funding
+
+This dashboard was developed as part of the 'Elucidating Diversity Dynamics in Marine Tropical Hotspots' (EDiTH) project. The EDiTH project is funded by the UK's Natural Environment Research Council (NERC) through an Independent Research Fellowship awarded to [Lewis A. Jones](mailto:lewis.jones@ucl.ac.uk) (project no. UKRI185).
+
+![](images/nerc.jpg){width=10%}
+
+:::
+
+## Column {width=25%}
+
+```{R}
+#| content: valuebox
+#| title: "Status: Caribbean data compilation"
+#| icon: calendar-range
+#| color: warning
+"Live"
+```
+
+```{R}
+#| content: valuebox
+#| title: "Number of contributors"
+#| icon: people-fill
+#| color: light
+#| 
+1
+```
+
+```{R}
+#| content: valuebox
+#| title: "Number of occurrences"
+#| icon: record2-fill
+#| color: light
+5
+```
+
+```{R}
+#| content: valuebox
+#| title: "Number of sampling events"
+#| icon: binoculars-fill
+#| color: light
+5
+```
+
+```{R}
+#| content: valuebox
+#| title: "Number of taxa"
+#| icon: collection-fill
+#| color: light
+#| 
+5
+```
+
+# Taxa
+
+
+# Diversity
+
+
+# Glossary
+
+# Data
+
+## Column {.sidebar}
+
+::: {.card}
+
+# About
+
+Select a tab within the main panel area
+
+## Map 
+
+Geographic visualisation of the data available within ARCDB
+
+## Table
+
+Data table of the data available within ARCDB
+
+## Download
+
+Instructions on how to download the available data
+
+## Contribute
+
+Instructions on how to contribute to the database
+
+:::
+
+## Column {.tabset}
+
+```{r map}
+#| title: Map
+data_map
+```
+
+```{r taxa}
+#| title: Taxa
+data_table
+```
+
+```{r specimen}
+#| title: Specimens
+data_table
+```
+
+```{r locality}
+#| title: Localities
+data_table
+```
+
+```{r event}
+#| title: Events
+data_table
+```
+
+```{r occurrence}
+#| title: Occurrences
+data_table
+```
+
+```{r chronostrat}
+#| title: Chronostratigraphy
+data_table
+```
+
+```{r traits}
+#| title: Traits
+data_table
+```
+
+
+::: {.card title="Download"}
+
+The full Cenozoic Caribbean Corals dataset as a Darwin Core Archive (DwC-A) can be download here: 
+
+<a href="data/dwc.csv" download="dwc.csv" class="btn btn-primary">Download DwC-A</a>
+
+Zenodo
+
+:::
+
+::: {.card title="Contribute"}
+
+# How to contribute
+
+You can contribute to the Ancient Reef Community Database (ARCDB) in several ways.
+
+## Data
+
+Email
+Review
+Template
+
+## Dashboard
+
+PR
+
+## Community space
+
+GitHub discussion
+
+## Code of Conduct
+
+:::
+
+::: {.card title="Guide"}
+
+To be complete
+
+:::
+
+# References
+
+
+
+
+
+<!--
+
+```{r stats}
+ccc_stats <- data.frame(collections = length(unique(colldf$collection_no)),
+                        occurrences = length(unique(colldf$occurrence_no)),
+                        taxa = length(unique(occdf$genus)))
+```
+
+
+
+
+# Data
+
+## Row {height=60%}
+
+### Column {width=100%}
+
+## Row {height=40%}
+
+# Taxa
+
+# Diversity
+
+# Morphology
+
+# Glossary
+
+# References
+
+# Contribute
+
+# Download
+
+## Row
+
+### Column {width=50%}
+
+::: {.card title="Contribute"}
+
+:::
+
+### Column {width=50%}
+
+::: {.card title="Darwin Core Archive"}
+
+The full Cenozoic Caribbean Corals dataset as a Darwin Core Archive (DwC-A) can be download here: 
+
+<a href="data/dwc.csv" download="dwc.csv" class="btn btn-primary">Download DwC-A</a>
+
+:::
+
+-->
+
+
+
+
