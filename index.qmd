@@ -216,10 +216,37 @@ To be complete
 
 # Diversity
 
-```{=html}
- <iframe id="example1" src="https://jjallaire.shinyapps.io/penguins-dashboard/" style="border: none; width: 100%; height: 100%" frameborder="0"></iframe>
-```
+## Column {.sidebar}
 
+::: {.card}
+
+# About
+
+Select a tab within the main panel area
+
+## Map 
+
+Geographic visualisation of the data available within ARCDB
+
+## Table
+
+Data table of the data available within ARCDB
+
+## Download
+
+Instructions on how to download the available data
+
+## Contribute
+
+Instructions on how to contribute to the database
+
+:::
+
+## Column
+
+```{=html}
+<iframe id="example1" src="https://edith-nerc.github.io/shiny/" style="border: none; width: 100%; height: 100%" frameborder="0"></iframe>
+```
 
 # Glossary
 
