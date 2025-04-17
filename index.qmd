@@ -11,18 +11,36 @@ format:
      - icon: github
        href: https://github.com/EDiTH-NERC/dash
 logo: images/coral.png
+filters:
+  - shinylive
+include-in-header:
+  text: |
+    <link rel="icon" type="image/png" href="images/coral.png">
 ---
 
-```{R}
+```{r}
 source("R/setup.R")
-
 ```
 
 # About
 
-## Column {width=75%}
+## Column {width=100%}
 
-::: {.card title="About"}
+### Row {width=10%}
+
+```{r}
+#| content: valuebox
+#| title: "Current status"
+#| icon: exclamation-circle-fill
+#| color: warning
+"Under development"
+```
+
+### Row {width=90%}
+
+#### Column {width=75%}
+
+::: {.card title="Ancient Reef Community Database"}
 
 # Motivation 
 
@@ -44,17 +62,17 @@ This dashboard was developed as part of the 'Elucidating Diversity Dynamics in M
 
 :::
 
-## Column {width=25%}
+#### Column {width=25%}
 
-```{R}
+```{r}
 #| content: valuebox
-#| title: "Status"
+#| title: "Project phase"
 #| icon: calendar-range
-#| color: warning
-"Development"
+#| color: light
+"Caribbean"
 ```
 
-```{R}
+```{r}
 #| content: valuebox
 #| title: "Number of contributors"
 #| icon: people-fill
@@ -63,7 +81,7 @@ This dashboard was developed as part of the 'Elucidating Diversity Dynamics in M
 1
 ```
 
-```{R}
+```{r}
 #| content: valuebox
 #| title: "Number of occurrences"
 #| icon: record2-fill
@@ -71,7 +89,7 @@ This dashboard was developed as part of the 'Elucidating Diversity Dynamics in M
 5
 ```
 
-```{R}
+```{r}
 #| content: valuebox
 #| title: "Number of sampling events"
 #| icon: binoculars-fill
@@ -79,7 +97,7 @@ This dashboard was developed as part of the 'Elucidating Diversity Dynamics in M
 5
 ```
 
-```{R}
+```{r}
 #| content: valuebox
 #| title: "Number of taxa"
 #| icon: collection-fill
@@ -87,14 +105,6 @@ This dashboard was developed as part of the 'Elucidating Diversity Dynamics in M
 #| 
 5
 ```
-
-# Taxa
-
-
-# Diversity
-
-
-# Glossary
 
 # Data
 
@@ -207,64 +217,93 @@ To be complete
 
 :::
 
-# References
-
-
-
-
-
-<!--
-
-```{r stats}
-ccc_stats <- data.frame(collections = length(unique(colldf$collection_no)),
-                        occurrences = length(unique(colldf$occurrence_no)),
-                        taxa = length(unique(occdf$genus)))
-```
-
-
-
-
-# Data
-
-## Row {height=60%}
-
-### Column {width=100%}
-
-## Row {height=40%}
-
-# Taxa
-
 # Diversity
 
-# Morphology
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 600
+library(shiny)
+library(bslib)
+
+# Define UI for app that draws a histogram ----
+ui <- page_sidebar(
+  sidebar = sidebar(open = "open",
+    numericInput("n", "Sample count", 100),
+    checkboxInput("pause", "Pause", FALSE),
+  ),
+  plotOutput("plot", width=1100)
+)
+
+server <- function(input, output, session) {
+  data <- reactive({
+    input$resample
+    if (!isTRUE(input$pause)) {
+      invalidateLater(1000)
+    }
+    rnorm(input$n)
+  })
+  
+  output$plot <- renderPlot({
+    hist(data(),
+      breaks = 40,
+      xlim = c(-2, 2),
+      ylim = c(0, 1),
+      lty = "blank",
+      xlab = "value",
+      freq = FALSE,
+      main = ""
+    )
+    
+    x <- seq(from = -2, to = 2, length.out = 500)
+    y <- dnorm(x)
+    lines(x, y, lwd=1.5)
+    
+    lwd <- 5
+    abline(v=0, col="red", lwd=lwd, lty=2)
+    abline(v=mean(data()), col="blue", lwd=lwd, lty=1)
+
+    legend(legend = c("Normal", "Mean", "Sample mean"),
+      col = c("black", "red", "blue"),
+      lty = c(1, 2, 1),
+      lwd = c(1, lwd, lwd),
+      x = 1,
+      y = 0.9
+    )
+  }, res=140)
+}
+
+# Create Shiny app ----
+shinyApp(ui = ui, server = server)
+```
 
 # Glossary
 
+```{r glossary}
+#| title: Glossary
+glossary
+```
+
 # References
 
-# Contribute
+```{r reference}
+#| title: References
+reference
+```
 
-# Download
+# News
 
-## Row
+```{r news}
+#| title: News
+news
+```
 
-### Column {width=50%}
+# Contact
 
-::: {.card title="Contribute"}
+::: {.card title="Contact"}
 
-:::
-
-### Column {width=50%}
-
-::: {.card title="Darwin Core Archive"}
-
-The full Cenozoic Caribbean Corals dataset as a Darwin Core Archive (DwC-A) can be download here: 
-
-<a href="data/dwc.csv" download="dwc.csv" class="btn btn-primary">Download DwC-A</a>
+To be complete
 
 :::
-
--->
 
 
 

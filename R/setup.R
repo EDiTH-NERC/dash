@@ -6,6 +6,7 @@
 # Email: LewisA.Jones@outlook.com
 # Repository: https://github.com/LewisAJones/dash
 # Load libraries --------------------------------------------------------
+library(tidyverse)
 library(leaflet)
 library(sf)
 library(reactable)
@@ -39,6 +40,40 @@ colldf$content <- paste0("<b>",
                          "Genera: ",
                          colldf$genera
 )
+
+
+# Glossary --------------------------------------------------------------
+glossary <- read_csv("data/glossary.csv") |> 
+  reactable(searchable = TRUE,
+            defaultPageSize = 100,
+            fullWidth = TRUE,
+            bordered = FALSE,
+            columns = list(Term = colDef(name = "", minWidth = 50),
+                           Definition = colDef(name = "", minWidth = 300)),
+            theme = reactableTheme(
+              style = list(fontSize = "1em")))
+
+
+# Reference -------------------------------------------------------------
+reference <- read_csv("data/reference.csv") |> 
+  reactable(searchable = TRUE,
+            defaultPageSize = 100,
+            fullWidth = TRUE,
+            bordered = FALSE,
+            columns = list(Reference = colDef(name = "")),
+            theme = reactableTheme(
+              style = list(fontSize = "1em")))
+
+# News ------------------------------------------------------------------
+news <- read_csv("data/news.csv") |> 
+  reactable(searchable = TRUE,
+            defaultPageSize = 100,
+            fullWidth = TRUE,
+            bordered = FALSE,
+            columns = list(Date = colDef(name = "", minWidth = 50),
+                           Text = colDef(name = "", minWidth = 300)),
+            theme = reactableTheme(
+              style = list(fontSize = "1em")))
 
 # Map -------------------------------------------------------------------
 data_map <- colldf |> 
